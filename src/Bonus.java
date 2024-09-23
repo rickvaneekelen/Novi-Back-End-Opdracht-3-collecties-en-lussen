@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Bonus {
 
@@ -10,16 +8,30 @@ public class Bonus {
         // In de code staan op verschillende plekken comments tussen "/*...*/" als hint wat je moet doen
 
 
-        HashSet<Integer> secretnumber = randomnumbergenerator();
+        Set<Integer> secretnumber = new HashSet<>();
+//        secretnumber.add(1);
+//        secretnumber.add(2);
+//        secretnumber.add(3);
+        secretnumber.addAll(randomnumbergenerator());
+
+        for(Integer i : secretnumber){
+            System.out.println(i);
+        }
+
+
+
+        System.out.println(secretnumber);
+
         String stringnumber = setToStringConverter(secretnumber);
-        System.out.println(stringnumber);
-        feedback(/*vul hier het juiste argument in*/);
+       // System.out.println(stringnumber);
+        feedback(stringnumber);
 
     }
 
-    public static void/*moet dit returntype "void" zijn of wat anders?*/ randomnumbergenerator(/*Heeft deze methode nog parameter(s) nodig?*/){
+    public static Set<Integer> randomnumbergenerator(){
          /*
         Vul hier de body van de methode in.
+
 
         Stappenplan:
         - Maak een nieuwe variabele van type Random. (Tip: Zoek op internet hoe je Random kunt gebruiken)
@@ -27,17 +39,29 @@ public class Bonus {
         - Schrijf een while-loop om 4 random nummers aan de hashset toe te voegen
         - return de hashset
          */
+        Set<Integer> number = new HashSet<>();
+        Random rand = new Random();
+        while (number.size() < 4) {
+            int result = rand.nextInt(4)+1;
+            //System.out.println("result: " + result);
+            number.add(result);
+        }
+        return number;
     }
 
-    public static void/*moet dit returntype "void" zijn of wat anders?*/ setToStringConverter(/*Heeft deze methode nog parameter(s) nodig?*/){
-        /*
-        Vul hier de body van de methode in.
+    public static String setToStringConverter(Set<Integer> hs){
 
-        Stappenplan:
-        - Maak als eerst een String variabele met als waarde een lege String. (of gebruik een StringBuilder)
-        - Schrijf vervolgens een for-loop om de items in de hashset een voor een aan de String variabele toe te voegen.
-        - Return de (gevulde) String variabele
-         */
+        //Vul hier de body van de methode in.
+        String s = "";
+        for(Integer i : hs){
+            s += i;
+        }
+       // Stappenplan:
+       // - Maak als eerst een String variabele met als waarde een lege String. (of gebruik een StringBuilder)
+       // - Schrijf vervolgens een for-loop om de items in de hashset een voor een aan de String variabele toe te voegen.
+       // - Return de (gevulde) String variabele
+
+        return s;
     }
 
 
